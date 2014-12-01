@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#69646465"
+    android:baselineAligned="true">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="right"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="3dp">
+
+        <TextView
+            android:id="@+id/tv_day"
+            android:text="@string/day_text"
+            style="@style/text_down"
+            android:textStyle="bold">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_month"
+            android:text="@string/month_text"
+            style="@style/text_down">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_year"
+            android:text="@string/year_text"
+            style="@style/text_down"
+            android:textStyle="bold">
+        </TextView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_dayofweek"
+        android:text="@string/dayofweek_text"
+        style="@style/text_down"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="3dp">
+    </TextView>
+
+</LinearLayout>

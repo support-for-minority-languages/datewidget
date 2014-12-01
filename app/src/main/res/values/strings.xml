@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Лыдпус виджет</string>
+    <string name="widget_name">Лыдпус виджет</string>
+    <string name="day_text">23</string>
+    <string name="month_text">ШУРКЫНМОН</string>
+    <string name="dayofweek_text">вордӥськон</string>
+    <string name="year_text">2014</string>
+    <string name="new_year">Выль арен!!!</string>
+    <string name="new_year2">Выль шудбурен!)</string>
+
+    <string-array name="day_names">
+        <item>Вордӥськон</item>
+        <item>Пуксён</item>
+        <item>Вирнунал</item>
+        <item>Покчиарня</item>
+        <item>Удмуртарня</item>
+        <item>Кӧснунал</item>
+        <item>Арнянунал</item>
+    </string-array>
+</resources>
