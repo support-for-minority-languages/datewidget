@@ -3,10 +3,10 @@
 
     <application
         android:label="@string/app_name"
-        android:icon="@drawable/icon">
+        android:icon="@drawable/ic_launcher">
         <receiver
             android:name="DateWidget"
-            android:icon="@drawable/icon"
+            android:icon="@drawable/ic_launcher"
             android:label="@string/widget_name">
             <intent-filter>
                 <action
