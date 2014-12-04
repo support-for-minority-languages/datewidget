@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Лыдпус виджет</string>
-    <string name="widget_name">Лыдпус виджет</string>
+    <string name="app_name">Дырпус виӝет</string>
+    <string name="widget_name">Дырпус виӝет</string>
     <string name="day_text">23</string>
     <string name="month_text">ШУРКЫНМОН</string>
-    <string name="dayofweek_text">вордӥськон</string>
+    <string name="dayofweek_text">арнянунал</string>
     <string name="year_text">2014</string>
     <string name="new_year">Выль арен!!!</string>
     <string name="new_year2">Выль шудбурен!)</string>
