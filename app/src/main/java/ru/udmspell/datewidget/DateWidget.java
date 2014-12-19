@@ -54,7 +54,25 @@ public class DateWidget extends AppWidgetProvider {
         remoteViews.setTextViewText(R.id.tv_year, yearName);
         remoteViews.setTextViewText(R.id.tv_bold, textName);
 
-//        remoteViews.setInt(R.id.tv_day, "style", );
+        //dev bd
+        if (monthDay == 28 && month == 3) {
+            remoteViews.setTextColor(R.id.tv_day, context.getResources().getColor(R.color.red));
+        } else {
+            remoteViews.setTextColor(R.id.tv_day, context.getResources().getColor(R.color.white));
+        }
+
+        //winter background
+        if ((month == 11 && monthDay >= 25) || (month == 0 && monthDay <= 10)) {
+            remoteViews.setInt(R.id.block, "setBackgroundResource", R.drawable.nw_shary);
+        } else if (month == 11 || month == 0 || month == 1) {
+            remoteViews.setInt(R.id.block, "setBackgroundResource", R.drawable.nw_05);
+        } else if (month >= 2  && month <= 4) { //spring
+            remoteViews.setInt(R.id.block, "setBackgroundResource", R.drawable.spring01);
+        } else if (month >= 5  && month <= 7) { //summer
+            remoteViews.setInt(R.id.block, "setBackgroundResource", R.drawable.summer03);
+        } else if (month >= 8  && month <= 10) { //autumn
+            remoteViews.setInt(R.id.block, "setBackgroundResource", R.drawable.autumn03);
+        }
 
         appWidgetManager.updateAppWidget(appWidgetIds, remoteViews);
     }
