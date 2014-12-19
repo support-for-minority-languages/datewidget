@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+=======
 # Built application files
 *.apk
 *.ap_
@@ -24,5 +32,11 @@ proguard/
 
 # Log Files
 *.log
+<<<<<<< HEAD
 .idea/
 app/manifest-merger-release-report.txt
+=======
+>>>>>>> master
+app/manifest-merger-release-report.txt
+.idea/
+>>>>>>> 9c8000ffc79bea7e17826c6cba9690b7b34a7bc8
