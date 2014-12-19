@@ -2,20 +2,35 @@
 <resources>
     <string name="app_name">Дырпус виӝет</string>
     <string name="widget_name">Дырпус виӝет</string>
-    <string name="day_text">23</string>
+    <string name="day_text">23-тӥ </string>
     <string name="month_text">ШУРКЫНМОН</string>
     <string name="dayofweek_text">арнянунал</string>
-    <string name="year_text">2014</string>
+    <string name="year_text">2014 ар</string>
     <string name="new_year">Выль арен!!!</string>
     <string name="new_year2">Выль шудбурен!)</string>
 
     <string-array name="day_names">
-        <item>Вордӥськон</item>
-        <item>Пуксён</item>
-        <item>Вирнунал</item>
-        <item>Покчиарня</item>
-        <item>Удмуртарня</item>
-        <item>Кӧснунал</item>
-        <item>Арнянунал</item>
+        <item>арнянунал</item>
+        <item>вордӥськон</item>
+        <item>пуксён</item>
+        <item>вирнунал</item>
+        <item>покчиарня</item>
+        <item>удмуртарня</item>
+        <item>кӧснунал</item>
+    </string-array>
+
+    <string-array name="month_names">
+        <item>толшор</item>
+        <item>тулыспал</item>
+        <item>южтолэзь</item>
+        <item>оштолэзь</item>
+        <item>куартолэзь</item>
+        <item>инвожо</item>
+        <item>пӧсьтолэзь</item>
+        <item>гудырикошкон</item>
+        <item>куарусён</item>
+        <item>коньывуон</item>
+        <item>шуркынмон</item>
+        <item>толсур</item>
     </string-array>
 </resources>

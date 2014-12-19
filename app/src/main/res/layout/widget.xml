@@ -4,8 +4,8 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="#69525252"
-    android:baselineAligned="true">
+    android:baselineAligned="true"
+    android:background="@drawable/nw_05">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -18,7 +18,7 @@
         <TextView
             android:id="@+id/tv_day"
             android:text="@string/day_text"
-            style="@style/text_down"
+            style="@style/date_text"
             android:textStyle="bold"
             android:layout_gravity="center_horizontal">
         </TextView>
@@ -26,14 +26,14 @@
         <TextView
             android:id="@+id/tv_month"
             android:text="@string/month_text"
-            style="@style/text_down"
+            style="@style/date_text"
             android:textStyle="bold">
         </TextView>
 
         <TextView
             android:id="@+id/tv_year"
             android:text="@string/year_text"
-            style="@style/text_down"
+            style="@style/date_text"
             android:textStyle="bold">
         </TextView>
     </LinearLayout>
@@ -48,15 +48,14 @@
 
         <TextView
             android:id="@+id/tv_dayofweek"
-            style="@style/text_down"
+            style="@style/date_text"
             android:layout_marginBottom="3dp"
             android:layout_marginRight="3dp"
-            android:text="@string/dayofweek_text"></TextView>
+            android:text="@string/dayofweek_text"/>
 
         <TextView
             android:id="@+id/tv_bold"
-            android:text="@string/year_text"
-            style="@style/text_down"
+            style="@style/date_text"
             android:textStyle="bold"/>
 
     </LinearLayout>
