@@ -33,3 +33,5 @@ proguard/
 # Log Files
 *.log
 >>>>>>> master
+app/manifest-merger-release-report.txt
+.idea/
