@@ -27,23 +27,42 @@ public class DateWidget extends AppWidgetProvider {
         int dayOfWeek = getDayOfWeek(c);
         int month = getMonthName(c);
         int year = getYear(c);
-        String monthDayName = "";
-        String dayOfWeekName = "";
-        String monthName = "";
-        String yearName = "";
+        String monthDayName = String.valueOf(monthDay) + "тӥ ";
+        String dayOfWeekName = context.getResources().getStringArray(R.array.day_names)[dayOfWeek - 1];
+        String monthName = context.getResources().getStringArray(R.array.month_names)[month] + " ";
+        String yearName = String.valueOf(year) + " ар";
         String textName = "";
+        String summaryText = "";
 
         if (monthDay == 1 && month == 0) {
+            summaryText = monthDayName + monthName + yearName;
             yearName = "Выль Арен!!!";
             textName = "Выль шудбурен!:)";
+            monthDayName = "";
+            dayOfWeekName = "";
+            monthName = "";
         } else if (monthDay == 14 && month == 0) {
+            summaryText = monthDayName + monthName + yearName;
             yearName = "Та нуналэ вордскиз";
             textName = "Кузебай Герд";
-        } else {
-            monthDayName = String.valueOf(monthDay) + "тӥ ";
-            monthName = context.getResources().getStringArray(R.array.month_names)[month] + " ";
-            yearName = String.valueOf(year) + "тӥ ар";
-            dayOfWeekName =  context.getResources().getStringArray(R.array.day_names)[dayOfWeek - 1];
+            monthDayName = "";
+            dayOfWeekName = "";
+            monthName = "";
+        } else if (monthDay == 16 && month == 3) {
+            summaryText = monthDayName + monthName + yearName;
+            yearName = "Та нуналэ вордскиз";
+            textName = "Ашальчи Оки";
+            monthDayName = "";
+            dayOfWeekName = "";
+            monthName = "";
+        } else if (monthDay == 1 && month == 11) {
+            dayOfWeekName = "Нырысетӥ толалтэ нуналэн!";
+        } else if (monthDay == 1 && month == 2) {
+            dayOfWeekName = "Нырысетӥ тулыс нуналэн!";
+        } else if (monthDay == 1 && month == 5) {
+            dayOfWeekName = "Нырысетӥ гужем нуналэн!";
+        } else if (monthDay == 1 && month == 8) {
+            dayOfWeekName = "Нырысетӥ сӥзьыл нуналэн!";
         }
 
         Log.d(LOG_TAG, "onUpdate " + Arrays.toString(appWidgetIds) + monthDayName + monthName.toUpperCase() + dayOfWeekName);
@@ -53,6 +72,7 @@ public class DateWidget extends AppWidgetProvider {
         remoteViews.setTextViewText(R.id.tv_dayofweek, dayOfWeekName);
         remoteViews.setTextViewText(R.id.tv_year, yearName);
         remoteViews.setTextViewText(R.id.tv_bold, textName);
+        remoteViews.setTextViewText(R.id.summary_text, summaryText);
 
         //dev bd
         if (monthDay == 28 && month == 3) {
@@ -61,7 +81,7 @@ public class DateWidget extends AppWidgetProvider {
             remoteViews.setTextColor(R.id.tv_day, context.getResources().getColor(R.color.white));
         }
 
-        //winter background
+        //set background
         if ((month == 11 && monthDay >= 25) || (month == 0 && monthDay <= 10)) {
             remoteViews.setInt(R.id.block, "setBackgroundResource", R.drawable.nw_shary);
         } else if (month == 11 || month == 0 || month == 1) {
