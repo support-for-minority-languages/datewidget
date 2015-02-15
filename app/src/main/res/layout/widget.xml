@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:baselineAligned="true"
-    android:background="@drawable/nw_05"
     android:id="@+id/block">
 
     <TextView

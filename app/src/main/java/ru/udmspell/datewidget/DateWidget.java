@@ -1,8 +1,10 @@
 package ru.udmspell.datewidget;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.RemoteViews;
 
@@ -74,6 +76,10 @@ public class DateWidget extends AppWidgetProvider {
         remoteViews.setTextViewText(R.id.tv_bold, textName);
         remoteViews.setTextViewText(R.id.summary_text, summaryText);
 
+        Intent intent = new Intent("com.google.android.calendar");
+        PendingIntent pendingIntent = PendingIntent.getService(context, 0, intent, 0);
+        remoteViews.setOnClickPendingIntent(R.id.block, pendingIntent);
+
         //dev bd
         if (monthDay == 28 && month == 3) {
             remoteViews.setTextColor(R.id.tv_day, context.getResources().getColor(R.color.red));
@@ -82,17 +88,17 @@ public class DateWidget extends AppWidgetProvider {
         }
 
         //set background
-        if ((month == 11 && monthDay >= 25) || (month == 0 && monthDay <= 10)) {
-            remoteViews.setInt(R.id.block, "setBackgroundResource", R.drawable.nw_shary);
-        } else if (month == 11 || month == 0 || month == 1) {
-            remoteViews.setInt(R.id.block, "setBackgroundResource", R.drawable.nw_05);
-        } else if (month >= 2  && month <= 4) { //spring
-            remoteViews.setInt(R.id.block, "setBackgroundResource", R.drawable.spring01);
-        } else if (month >= 5  && month <= 7) { //summer
-            remoteViews.setInt(R.id.block, "setBackgroundResource", R.drawable.summer03);
-        } else if (month >= 8  && month <= 10) { //autumn
-            remoteViews.setInt(R.id.block, "setBackgroundResource", R.drawable.autumn03);
-        }
+//        if ((month == 11 && monthDay >= 25) || (month == 0 && monthDay <= 10)) {
+//            remoteViews.setInt(R.id.block, "setBackgroundResource", R.drawable.ny_shar);
+//        } else if (month == 11 || month == 0 || month == 1) {
+//            remoteViews.setInt(R.id.block, "setBackgroundResource", R.drawable.nw_05);
+//        } else if (month >= 2  && month <= 4) { //spring
+//            remoteViews.setInt(R.id.block, "setBackgroundResource", R.drawable.spring01);
+//        } else if (month >= 5  && month <= 7) { //summer
+//            remoteViews.setInt(R.id.block, "setBackgroundResource", R.drawable.summer03);
+//        } else if (month >= 8  && month <= 10) { //autumn
+//            remoteViews.setInt(R.id.block, "setBackgroundResource", R.drawable.autumn03);
+//        }
 
         appWidgetManager.updateAppWidget(appWidgetIds, remoteViews);
     }
