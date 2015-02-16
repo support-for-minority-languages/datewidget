@@ -18,7 +18,7 @@ public class DateWidget extends AppWidgetProvider {
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         super.onUpdate(context, appWidgetManager, appWidgetIds);
 
-        final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        final AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         final Calendar TIME = Calendar.getInstance();
         TIME.set(Calendar.MINUTE, 0);
@@ -29,15 +29,20 @@ public class DateWidget extends AppWidgetProvider {
 
         if (service == null) {
             service = PendingIntent.getService(context, 0, i, PendingIntent.FLAG_CANCEL_CURRENT);
+            alarmManager.setRepeating(AlarmManager.RTC, Calendar.getInstance().getTimeInMillis(), 0, service);
         }
 
-        m.setRepeating(AlarmManager.RTC, TIME.getTime().getTime(), 1000 * 60, service);
+        alarmManager.setRepeating(AlarmManager.RTC, TIME.getTime().getTime(), 1000 * 60, service);
     }
 
     @Override
     public void onDisabled(Context context) {
-        final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        super.onDisabled(context);
 
-        m.cancel(service);
+        final AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        if (service != null)
+        {
+            alarmManager.cancel(service);
+        }
     }
 }

@@ -80,6 +80,9 @@ public class DateService extends Service
             dayOfWeekName = "Нырысетӥ сӥзьыл нуналэн!";
         }
 
+        // test
+        //dayOfWeekName = DateFormat.format("hh:mm:ss", new Date()).toString();
+
         remoteViews.setTextViewText(R.id.tv_day, monthDayName);
         remoteViews.setTextViewText(R.id.tv_month, monthName.toUpperCase());
         remoteViews.setTextViewText(R.id.tv_dayofweek, dayOfWeekName);
