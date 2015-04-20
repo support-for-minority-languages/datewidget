@@ -42,7 +42,7 @@ public class DateService extends Service
         int dayOfWeek = getDayOfWeek(c);
         int month = getMonthName(c);
         int year = getYear(c);
-        String monthDayName = String.valueOf(monthDay) + "тӥ ";
+        String monthDayName = String.valueOf(monthDay) + "-тӥ ";
         String dayOfWeekName = getResources().getStringArray(R.array.day_names)[dayOfWeek - 1];
         String monthName = getResources().getStringArray(R.array.month_names)[month] + " ";
         String yearName = String.valueOf(year) + " ар";

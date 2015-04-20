@@ -24,23 +24,19 @@
         <TextView
             android:id="@+id/tv_day"
             android:text="@string/day_text"
-            style="@style/date_text"
-            android:textStyle="bold"
-            android:layout_gravity="center_horizontal">
+            style="@style/date_text_bold">
         </TextView>
 
         <TextView
             android:id="@+id/tv_month"
             android:text="@string/month_text"
-            style="@style/date_text"
-            android:textStyle="bold">
+            style="@style/date_text_bold">
         </TextView>
 
         <TextView
             android:id="@+id/tv_year"
             android:text="@string/year_text"
-            style="@style/date_text"
-            android:textStyle="bold">
+            style="@style/date_text_bold">
         </TextView>
     </LinearLayout>
 
