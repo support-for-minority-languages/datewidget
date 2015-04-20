@@ -33,4 +33,17 @@
         <item>шуркынмон</item>
         <item>толсур</item>
     </string-array>
+
+    <string-array name="color_names">
+        <item>тӧдьы</item>
+        <item>сьӧд</item>
+        <item>горд</item>
+        <item>лемлет</item>
+        <item>лыз</item>
+        <item>вож</item>
+        <item>ӵуж</item>
+        <item>зангари</item>
+        <item>пурысь</item>
+    </string-array>
+
 </resources>

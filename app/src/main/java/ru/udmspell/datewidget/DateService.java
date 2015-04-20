@@ -3,7 +3,9 @@ package ru.udmspell.datewidget;
 import android.app.Service;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.widget.RemoteViews;
 
@@ -20,22 +22,28 @@ public class DateService extends Service
     @Override
     public int onStartCommand(Intent intent, int flags, int startId)
     {
-        buildUpdate();
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this
+                .getApplicationContext());
+
+        ComponentName thisWidget = new ComponentName(getApplicationContext(),
+                DateWidget.class);
+
+        int[] allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
+
+        SharedPreferences sp = this.getSharedPreferences(
+                ConfigActivity.WIDGET_PREF, Context.MODE_PRIVATE);
+
+        for (int widgetId : allWidgetIds) {
+            RemoteViews remoteViews = getRemoteViewsText(sp, widgetId);
+            appWidgetManager.updateAppWidget(widgetId, remoteViews);
+        }
         return super.onStartCommand(intent, flags, startId);
     }
 
-    private void buildUpdate()
-    {
-        RemoteViews remoteViews = getRemoteViewsText();
-
-        // Push update for this widget to the home screen
-        ComponentName thisWidget = new ComponentName(this, DateWidget.class);
-        AppWidgetManager manager = AppWidgetManager.getInstance(this);
-        manager.updateAppWidget(thisWidget, remoteViews);
-    }
-
-    private RemoteViews getRemoteViewsText() {
+    private RemoteViews getRemoteViewsText(SharedPreferences sp, int widgetId) {
         RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.widget);
+
+        int textColor = sp.getInt(ConfigActivity.TEXT_COLOR + widgetId, getResources().getColor(R.color.white));
 
         Calendar c = Calendar.getInstance();
         int monthDay = getMonthDay(c);
@@ -80,8 +88,12 @@ public class DateService extends Service
             dayOfWeekName = "Нырысетӥ сӥзьыл нуналэн!";
         }
 
-        // test
-        //dayOfWeekName = DateFormat.format("hh:mm:ss", new Date()).toString();
+        //dev bd
+        if (monthDay == 28 && month == 3) {
+            remoteViews.setTextColor(R.id.tv_day, getResources().getColor(R.color.red));
+        } else {
+            remoteViews.setTextColor(R.id.tv_day, getResources().getColor(R.color.white));
+        }
 
         remoteViews.setTextViewText(R.id.tv_day, monthDayName);
         remoteViews.setTextViewText(R.id.tv_month, monthName.toUpperCase());
@@ -90,12 +102,14 @@ public class DateService extends Service
         remoteViews.setTextViewText(R.id.tv_bold, textName);
         remoteViews.setTextViewText(R.id.summary_text, summaryText);
 
-        //dev bd
-        if (monthDay == 28 && month == 3) {
-            remoteViews.setTextColor(R.id.tv_day, getResources().getColor(R.color.red));
-        } else {
-            remoteViews.setTextColor(R.id.tv_day, getResources().getColor(R.color.white));
-        }
+        //set text color
+        remoteViews.setInt(R.id.tv_day, "setTextColor", textColor);
+        remoteViews.setInt(R.id.tv_month, "setTextColor", textColor);
+        remoteViews.setInt(R.id.tv_dayofweek, "setTextColor", textColor);
+        remoteViews.setInt(R.id.tv_year, "setTextColor", textColor);
+        remoteViews.setInt(R.id.tv_bold, "setTextColor", textColor);
+        remoteViews.setInt(R.id.summary_text, "setTextColor", textColor);
+
         return remoteViews;
     }
 
