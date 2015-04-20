@@ -11,7 +11,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -20,6 +19,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
+import ru.udmspell.datewidget.adapters.AppSpinnerAdapter;
 import ru.udmspell.datewidget.adapters.ColorsSpinnerAdapter;
 
 public class ConfigActivity extends Activity {
@@ -41,6 +41,7 @@ public class ConfigActivity extends Activity {
 
     public final static String WIDGET_PREF = "widget_pref";
     public final static String TEXT_COLOR = "text_color_";
+    public static final String SEL_APP = "sel_app_";
     private Spinner textColorSpinner;
     private Spinner appListSpinner;
 
@@ -76,19 +77,20 @@ public class ConfigActivity extends Activity {
 
         appListSpinner = (Spinner) findViewById(R.id.appsSpinner);
         ArrayList<AppInfo> appInfoArrayList = getListOfInstalledApp(this);
-        appListSpinner.setAdapter(new ArrayAdapter<>(this, R.layout.app_spinner_item,
-                R.id.appName, appInfoArrayList));
+        appListSpinner.setAdapter(new AppSpinnerAdapter(this, R.layout.app_spinner_item,
+                appInfoArrayList));
     }
-
 
     public void onClick(View v) {
 
         int selTextColorPos = textColorSpinner.getSelectedItemPosition();
         int textColor = getColor(selTextColorPos);
 
+        String selAppPackage = ((AppInfo) appListSpinner.getSelectedItem()).getPackageName();
         // Записываем значения с экрана в Preferences
         SharedPreferences sp = getSharedPreferences(WIDGET_PREF, MODE_PRIVATE);
         sp.edit().putInt(TEXT_COLOR + widgetID, getResources().getColor(textColor)).apply();
+        sp.edit().putString(SEL_APP + widgetID, selAppPackage).apply();
 
         // положительный ответ
         setResult(RESULT_OK, resultValue);
@@ -176,6 +178,13 @@ public class ConfigActivity extends Activity {
 
                 });
             }
+
+            // добавляем пустой элемент
+            AppInfo app = new AppInfo();
+            app.setName("Нокыӵе но ватсэт лэзёно ӧвӧл");
+            app.setPackageName("");
+            app.setIcon(null);
+            installedApps.add(0, app);
             return installedApps;
         }
         return null;

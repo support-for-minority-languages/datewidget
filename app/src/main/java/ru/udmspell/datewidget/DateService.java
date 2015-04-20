@@ -44,8 +44,6 @@ public class DateService extends Service
     private RemoteViews getRemoteViewsText(SharedPreferences sp, int widgetId) {
         RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.widget);
 
-        int textColor = sp.getInt(ConfigActivity.TEXT_COLOR + widgetId, getResources().getColor(R.color.white));
-
         Calendar c = Calendar.getInstance();
         int monthDay = getMonthDay(c);
         int dayOfWeek = getDayOfWeek(c);
@@ -104,6 +102,7 @@ public class DateService extends Service
         remoteViews.setTextViewText(R.id.summary_text, summaryText);
 
         //set text color
+        int textColor = sp.getInt(ConfigActivity.TEXT_COLOR + widgetId, getResources().getColor(R.color.white));
         remoteViews.setInt(R.id.tv_day, "setTextColor", textColor);
         remoteViews.setInt(R.id.tv_month, "setTextColor", textColor);
         remoteViews.setInt(R.id.tv_dayofweek, "setTextColor", textColor);
@@ -112,10 +111,13 @@ public class DateService extends Service
         remoteViews.setInt(R.id.summary_text, "setTextColor", textColor);
 
         //set on click
-        Intent configIntent = getPackageManager().getLaunchIntentForPackage("com.google.android.calendar");
-        PendingIntent pIntent = PendingIntent.getActivity(this, widgetId,
-                configIntent, 0);
-        remoteViews.setOnClickPendingIntent(R.id.block, pIntent);
+        String appPackage = sp.getString(ConfigActivity.SEL_APP + widgetId, "");
+        if (!appPackage.isEmpty()) {
+            Intent configIntent = getPackageManager().getLaunchIntentForPackage(appPackage);
+            PendingIntent pIntent = PendingIntent.getActivity(this, widgetId,
+                    configIntent, 0);
+            remoteViews.setOnClickPendingIntent(R.id.block, pIntent);
+        }
 
         return remoteViews;
     }

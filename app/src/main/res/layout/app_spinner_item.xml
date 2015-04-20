@@ -5,14 +5,14 @@
     android:padding="8dp">
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="match_parent"
         android:id="@+id/appIcon"
         android:src="@drawable/ic_launcher" />
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:text="New Text"
         android:id="@+id/appName"
         android:layout_gravity="center_vertical"

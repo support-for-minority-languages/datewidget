@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ватсэт, кудӥз усьтӥськоз виӝет вылэ зӥбыса:"
+            android:text="Ватсэт, кудӥз виӝет вылэ зӥбыса усьтӥськоз:"
             android:textSize="18sp"
             android:id="@+id/textView" />
 
