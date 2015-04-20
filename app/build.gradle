@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 20
+    compileSdkVersion 22
     buildToolsVersion "20.0.0"
 
     defaultConfig {
         applicationId "ru.udmspell.datewidget"
         minSdkVersion 9
-        targetSdkVersion 20
-        versionCode 6
-        versionName "1.05"
+        targetSdkVersion 22
+        versionCode 7
+        versionName "1.06"
     }
     buildTypes {
         release {
