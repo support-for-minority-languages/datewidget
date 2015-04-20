@@ -1,5 +1,6 @@
 package ru.udmspell.datewidget;
 
+import android.app.PendingIntent;
 import android.app.Service;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
@@ -110,9 +111,14 @@ public class DateService extends Service
         remoteViews.setInt(R.id.tv_bold, "setTextColor", textColor);
         remoteViews.setInt(R.id.summary_text, "setTextColor", textColor);
 
+        //set on click
+        Intent configIntent = getPackageManager().getLaunchIntentForPackage("com.google.android.calendar");
+        PendingIntent pIntent = PendingIntent.getActivity(this, widgetId,
+                configIntent, 0);
+        remoteViews.setOnClickPendingIntent(R.id.block, pIntent);
+
         return remoteViews;
     }
-
 
     private int getDayOfWeek(Calendar c) {
         int dow = c.get(Calendar.DAY_OF_WEEK);
