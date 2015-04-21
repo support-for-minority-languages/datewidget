@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ public class ConfigActivity extends Activity {
 
     public final static String WIDGET_PREF = "widget_pref";
     public final static String TEXT_COLOR = "text_color_";
+    public static final String BACKGROUND = "background_";
     public static final String SEL_APP = "sel_app_";
     private Spinner textColorSpinner;
     private Spinner appListSpinner;
@@ -86,10 +88,13 @@ public class ConfigActivity extends Activity {
         int selTextColorPos = textColorSpinner.getSelectedItemPosition();
         int textColor = getColor(selTextColorPos);
 
+        boolean backgroundShow = ((CheckBox) findViewById(R.id.show_background)).isChecked();
+
         String selAppPackage = ((AppInfo) appListSpinner.getSelectedItem()).getPackageName();
         // Записываем значения с экрана в Preferences
         SharedPreferences sp = getSharedPreferences(WIDGET_PREF, MODE_PRIVATE);
         sp.edit().putInt(TEXT_COLOR + widgetID, getResources().getColor(textColor)).apply();
+        sp.edit().putBoolean(BACKGROUND + widgetID, backgroundShow).apply();
         sp.edit().putString(SEL_APP + widgetID, selAppPackage).apply();
 
         // положительный ответ

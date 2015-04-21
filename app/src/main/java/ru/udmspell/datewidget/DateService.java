@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.IBinder;
+import android.view.View;
 import android.widget.RemoteViews;
 
 import java.util.Calendar;
@@ -94,21 +95,33 @@ public class DateService extends Service
             remoteViews.setTextColor(R.id.tv_day, getResources().getColor(R.color.white));
         }
 
+
+
         remoteViews.setTextViewText(R.id.tv_day, monthDayName);
         remoteViews.setTextViewText(R.id.tv_month, monthName.toUpperCase());
         remoteViews.setTextViewText(R.id.tv_dayofweek, dayOfWeekName);
         remoteViews.setTextViewText(R.id.tv_year, yearName);
         remoteViews.setTextViewText(R.id.tv_bold, textName);
-        remoteViews.setTextViewText(R.id.summary_text, summaryText);
+        if (summaryText.isEmpty()) {
+            remoteViews.setViewVisibility(R.id.summary_text, View.GONE);
+        } else {
+            remoteViews.setTextViewText(R.id.summary_text, summaryText);
+        }
 
         //set text color
         int textColor = sp.getInt(ConfigActivity.TEXT_COLOR + widgetId, getResources().getColor(R.color.white));
-        remoteViews.setInt(R.id.tv_day, "setTextColor", textColor);
-        remoteViews.setInt(R.id.tv_month, "setTextColor", textColor);
-        remoteViews.setInt(R.id.tv_dayofweek, "setTextColor", textColor);
-        remoteViews.setInt(R.id.tv_year, "setTextColor", textColor);
-        remoteViews.setInt(R.id.tv_bold, "setTextColor", textColor);
-        remoteViews.setInt(R.id.summary_text, "setTextColor", textColor);
+        remoteViews.setTextColor(R.id.tv_day, textColor);
+        remoteViews.setTextColor(R.id.tv_month, textColor);
+        remoteViews.setTextColor(R.id.tv_dayofweek, textColor);
+        remoteViews.setTextColor(R.id.tv_year, textColor);
+        remoteViews.setTextColor(R.id.tv_bold, textColor);
+        remoteViews.setTextColor(R.id.summary_text, textColor);
+
+        //set background
+        boolean backgroundShow = sp.getBoolean(ConfigActivity.BACKGROUND + widgetId, false);
+        if (backgroundShow) {
+            remoteViews.setInt(R.id.block, "setBackgroundResource", R.drawable.background);
+        }
 
         //set on click
         String appPackage = sp.getString(ConfigActivity.SEL_APP + widgetId, "");
