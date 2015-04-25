@@ -7,23 +7,24 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.IBinder;
+import android.provider.CalendarContract;
 import android.view.View;
 import android.widget.RemoteViews;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class DateService extends Service
 {
     @Override
-    public void onCreate()
-    {
+    public void onCreate() {
         super.onCreate();
     }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId)
-    {
+    public int onStartCommand(Intent intent, int flags, int startId) {
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this
                 .getApplicationContext());
 
@@ -124,13 +125,14 @@ public class DateService extends Service
         }
 
         //set on click
-        String appPackage = sp.getString(ConfigActivity.SEL_APP + widgetId, "");
-        if (!appPackage.isEmpty()) {
-            Intent configIntent = getPackageManager().getLaunchIntentForPackage(appPackage);
-            PendingIntent pIntent = PendingIntent.getActivity(this, widgetId,
-                    configIntent, 0);
-            remoteViews.setOnClickPendingIntent(R.id.block, pIntent);
-        }
+        Calendar cal = new GregorianCalendar();
+        long time = cal.getTime().getTime();
+        Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
+        builder.appendPath("time");
+        builder.appendPath(Long.toString(time));
+        Intent intent = new Intent(Intent.ACTION_VIEW, builder.build());
+        PendingIntent pIntent = PendingIntent.getActivity(this, widgetId, intent, 0);
+        remoteViews.setOnClickPendingIntent(R.id.block, pIntent);
 
         return remoteViews;
     }
