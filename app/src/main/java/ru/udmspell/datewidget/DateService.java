@@ -89,15 +89,6 @@ public class DateService extends Service
             dayOfWeekName = "Нырысетӥ сӥзьыл нуналэн!";
         }
 
-        //dev bd
-        if (monthDay == 28 && month == 3) {
-            remoteViews.setTextColor(R.id.tv_day, getResources().getColor(R.color.red));
-        } else {
-            remoteViews.setTextColor(R.id.tv_day, getResources().getColor(R.color.white));
-        }
-
-
-
         remoteViews.setTextViewText(R.id.tv_day, monthDayName);
         remoteViews.setTextViewText(R.id.tv_month, monthName.toUpperCase());
         remoteViews.setTextViewText(R.id.tv_dayofweek, dayOfWeekName);
@@ -111,15 +102,21 @@ public class DateService extends Service
 
         //set text color
         int textColor = sp.getInt(ConfigActivity.TEXT_COLOR + widgetId, getResources().getColor(R.color.white));
-        remoteViews.setTextColor(R.id.tv_day, textColor);
+
         remoteViews.setTextColor(R.id.tv_month, textColor);
         remoteViews.setTextColor(R.id.tv_dayofweek, textColor);
         remoteViews.setTextColor(R.id.tv_year, textColor);
         remoteViews.setTextColor(R.id.tv_bold, textColor);
         remoteViews.setTextColor(R.id.summary_text, textColor);
+        //dev bd
+        if (monthDay == 28 && month == 3) {
+            remoteViews.setTextColor(R.id.tv_day, getResources().getColor(R.color.red));
+        } else {
+            remoteViews.setTextColor(R.id.tv_day, textColor);
+        }
 
         //set background
-        boolean backgroundShow = sp.getBoolean(ConfigActivity.BACKGROUND + widgetId, false);
+        boolean backgroundShow = sp.getBoolean(ConfigActivity.BACKGROUND + widgetId, true);
         if (backgroundShow) {
             remoteViews.setInt(R.id.block, "setBackgroundResource", R.drawable.background);
         }
