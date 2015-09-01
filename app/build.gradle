@@ -8,8 +8,8 @@ android {
         applicationId "ru.udmspell.datewidget"
         minSdkVersion 14
         targetSdkVersion 22
-        versionCode 7
-        versionName "1.06"
+        versionCode 8
+        versionName "1.07"
     }
     buildTypes {
         release {
