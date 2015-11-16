@@ -12,7 +12,7 @@ import android.widget.Spinner;
 
 import ru.udmspell.datewidget.adapters.ColorsSpinnerAdapter;
 
-public class ConfigActivity extends Activity {
+public class ConfigActivity extends Activity implements View.OnClickListener {
 
     private static final int WHITE = 0;
     private static final int BLACK = 1;
@@ -23,6 +23,8 @@ public class ConfigActivity extends Activity {
     private static final int YELLOW = 6;
     private static final int PURPLE = 7;
     private static final int GREY = 8;
+    final static long CALENDAR_COLOR_RED = 0xF44336;
+    final static long CALENDAR_COLOR_YELLOW = 0xFFEB3B;
 
     int widgetID = AppWidgetManager.INVALID_APPWIDGET_ID;
     Intent resultValue;
@@ -33,7 +35,6 @@ public class ConfigActivity extends Activity {
     public final static String TEXT_COLOR = "text_color_";
     public static final String BACKGROUND = "background_";
     private Spinner textColorSpinner;
-    private Spinner appListSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,35 +61,13 @@ public class ConfigActivity extends Activity {
         setResult(RESULT_CANCELED, resultValue);
 
         setContentView(R.layout.config_layout);
-
+        findViewById(R.id.ok_button).setOnClickListener(this);
+        findViewById(R.id.udmurt_meetings).setOnClickListener(this);
+        findViewById(R.id.udmurt_holidays).setOnClickListener(this);
+        
         textColorSpinner = (Spinner) findViewById(R.id.text_color_spinner);
         textColorSpinner.setAdapter(new ColorsSpinnerAdapter(this, R.layout.color_spinner_item, R.id.text,
                 getResources().getStringArray(R.array.color_names)));
-    }
-
-    public void onClick(View v) {
-
-        int selTextColorPos = textColorSpinner.getSelectedItemPosition();
-        int textColor = getColor(selTextColorPos);
-
-        boolean backgroundShow = ((CheckBox) findViewById(R.id.show_background)).isChecked();
-
-        // Записываем значения с экрана в Preferences
-        SharedPreferences sp = getSharedPreferences(WIDGET_PREF, MODE_PRIVATE);
-        sp.edit().putInt(TEXT_COLOR + widgetID, getResources().getColor(textColor)).apply();
-        sp.edit().putBoolean(BACKGROUND + widgetID, backgroundShow).apply();
-
-        // положительный ответ
-        setResult(RESULT_OK, resultValue);
-
-        Intent intent = new Intent(this, DateWidget.class);
-        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-        int[] ids = {widgetID};
-        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
-        sendBroadcast(intent);
-
-        Log.d(LOG_TAG, "finish config " + widgetID);
-        finish();
     }
 
     public static int getColor(int position) {
@@ -127,4 +106,41 @@ public class ConfigActivity extends Activity {
         return textColor;
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.ok_button:
+                onOkButton();
+                break;
+            case R.id.udmurt_meetings:
+                AndroidCalendar.addCalendar(this, getString(R.string.meetings), getString(R.string.meetings_account), CALENDAR_COLOR_RED);
+                break;
+            case R.id.udmurt_holidays:
+                AndroidCalendar.addCalendar(this, getString(R.string.holidays), getString(R.string.holidays_account), CALENDAR_COLOR_YELLOW);
+                break;
+        }
+    }
+
+    private void onOkButton() {
+        int selTextColorPos = textColorSpinner.getSelectedItemPosition();
+        int textColor = getColor(selTextColorPos);
+
+        boolean backgroundShow = ((CheckBox) findViewById(R.id.show_background)).isChecked();
+
+        // Записываем значения с экрана в Preferences
+        SharedPreferences sp = getSharedPreferences(WIDGET_PREF, MODE_PRIVATE);
+        sp.edit().putInt(TEXT_COLOR + widgetID, getResources().getColor(textColor)).apply();
+        sp.edit().putBoolean(BACKGROUND + widgetID, backgroundShow).apply();
+
+        // положительный ответ
+        setResult(RESULT_OK, resultValue);
+
+        Intent intent = new Intent(this, DateWidget.class);
+        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+        int[] ids = {widgetID};
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+        sendBroadcast(intent);
+
+        finish();
+    }
 }

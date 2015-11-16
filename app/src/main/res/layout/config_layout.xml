@@ -12,6 +12,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="ВИДӜЕТЛЭН ВЫЛТУСЫЗ"
+            android:textSize="14sp"
+            android:textColor="@color/red"
+            android:textStyle="bold"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/red"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:text="Текстлэн буёлэз:"
             android:textSize="18sp" />
 
@@ -38,10 +53,46 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp" />
 
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Календарьёслы гожтӥськон"
+            android:textSize="14sp"
+            android:textAllCaps="true"
+            android:textColor="@color/red"
+            android:textStyle="bold"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/red"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Удмурт ужрадъёслы гожтӥськоно"
+            android:id="@+id/udmurt_meetings"
+            android:layout_gravity="center_horizontal"
+            android:onClick="onClick"
+            android:layout_marginTop="7dp"
+            android:textSize="16sp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Удмурт калык календарьлы гожтӥськоно"
+            android:id="@+id/udmurt_holidays"
+            android:layout_gravity="center_horizontal"
+            android:onClick="onClick"
+            android:layout_marginTop="7dp"
+            android:textSize="16sp" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Пуктоно!"
+            android:text="Дась!"
             android:id="@+id/ok_button"
             android:layout_gravity="center_horizontal"
             android:onClick="onClick"
