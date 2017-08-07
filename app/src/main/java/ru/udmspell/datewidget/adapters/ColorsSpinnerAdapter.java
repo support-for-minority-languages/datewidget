@@ -29,7 +29,7 @@ public class ColorsSpinnerAdapter extends ArrayAdapter<String> {
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
         TextView resultView = (TextView) super.getView(position, convertView, parent);
-        int textColor = ConfigActivity.getColor(position);
+        int textColor = ConfigActivity.getTextColor(position);
         resultView.setTextColor(context.getResources().getColor(textColor));
         return resultView;
     }
@@ -37,7 +37,7 @@ public class ColorsSpinnerAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         TextView resultView = (TextView) super.getView(position, convertView, parent);
-        int textColor = ConfigActivity.getColor(position);
+        int textColor = ConfigActivity.getTextColor(position);
         resultView.setTextColor(context.getResources().getColor(textColor));
         return resultView;
     }

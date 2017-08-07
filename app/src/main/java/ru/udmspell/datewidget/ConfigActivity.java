@@ -70,7 +70,7 @@ public class ConfigActivity extends Activity implements View.OnClickListener {
                 getResources().getStringArray(R.array.color_names)));
     }
 
-    public static int getColor(int position) {
+    public static int getTextColor(int position) {
         int textColor;
         switch (position) {
             case WHITE:
@@ -123,7 +123,7 @@ public class ConfigActivity extends Activity implements View.OnClickListener {
 
     private void onOkButton() {
         int selTextColorPos = textColorSpinner.getSelectedItemPosition();
-        int textColor = getColor(selTextColorPos);
+        int textColor = getTextColor(selTextColorPos);
 
         boolean backgroundShow = ((CheckBox) findViewById(R.id.show_background)).isChecked();
 

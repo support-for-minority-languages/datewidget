@@ -18,6 +18,7 @@ import java.util.GregorianCalendar;
 
 public class DateService extends Service
 {
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -69,6 +70,13 @@ public class DateService extends Service
             summaryText = monthDayName + monthName + yearName;
             yearName = "Та нуналэ вордскиз";
             textName = "Кузебай Герд";
+            monthDayName = "";
+            dayOfWeekName = "";
+            monthName = "";
+        }  else if (monthDay == 15 && month == 0) {
+            summaryText = monthDayName + monthName + yearName;
+            yearName = "Вордӥськем нуналэныд, Мусое!";
+            textName = "Я тебя люблю! =*";
             monthDayName = "";
             dayOfWeekName = "";
             monthName = "";
