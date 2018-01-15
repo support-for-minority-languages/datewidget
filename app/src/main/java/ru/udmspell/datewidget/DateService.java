@@ -73,13 +73,13 @@ public class DateService extends Service
             monthDayName = "";
             dayOfWeekName = "";
             monthName = "";
-        }  else if (monthDay == 15 && month == 0) {
-            summaryText = monthDayName + monthName + yearName;
-            yearName = "Вордӥськем нуналэныд, Мусое!";
-            textName = "Я тебя люблю! =*";
-            monthDayName = "";
-            dayOfWeekName = "";
-            monthName = "";
+//        }  else if (monthDay == 15 && month == 0) {
+//            summaryText = monthDayName + monthName + yearName;
+//            yearName = "Вордӥськем нуналэныд, Мусое!";
+//            textName = "Я тебя люблю! =*";
+//            monthDayName = "";
+//            dayOfWeekName = "";
+//            monthName = "";
         } else if (monthDay == 16 && month == 3) {
             summaryText = monthDayName + monthName + yearName;
             yearName = "Та нуналэ вордскиз";
