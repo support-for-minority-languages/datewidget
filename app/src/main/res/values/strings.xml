@@ -8,6 +8,14 @@
     <string name="year_text">2014 ар</string>
     <string name="new_year">Выль арен!!!</string>
     <string name="new_year2">Выль шудбурен!)</string>
+    <string name="no_accounts">Одӥг но аккаунт шедьтэмын ӧвӧл</string>
+    <string name="choose_account">Кыӵе аккунтэ ватсано та календарез?</string>
+    <string name="meetings">Ужрадъёс</string>
+    <string name="holidays">Удмурт калык календарь</string>
+    <string name="calendar_was_add">" календарь ватсамын ни"</string>
+    <string name="calend_added">" ватсамын"</string>
+    <string name="holidays_account">chvkijg8vuc145qi2p7reuqvj4@group.calendar.google.com</string>
+    <string name="meetings_account">cldrb5j6ead4gtrvt02g5064ko@group.calendar.google.com</string>
 
     <string-array name="day_names">
         <item>арнянунал</item>
@@ -33,4 +41,17 @@
         <item>шуркынмон</item>
         <item>толсур</item>
     </string-array>
+
+    <string-array name="color_names">
+        <item>тӧдьы</item>
+        <item>сьӧд</item>
+        <item>горд</item>
+        <item>лемлет</item>
+        <item>лыз</item>
+        <item>вож</item>
+        <item>ӵуж</item>
+        <item>зангари</item>
+        <item>пурысь</item>
+    </string-array>
+
 </resources>

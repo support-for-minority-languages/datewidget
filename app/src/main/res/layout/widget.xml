@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
+    android:id="@+id/block"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:baselineAligned="true"
-    android:background="@drawable/nw_05"
-    android:id="@+id/block">
+    android:baselineAligned="true">
 
     <TextView
         android:id="@+id/summary_text"
@@ -14,7 +13,14 @@
         tools:text="@string/dayofweek_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10sp" />
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_year"
+        android:text="@string/year_text"
+        android:textSize="12sp"
+        style="@style/date_text"
+        android:layout_gravity="center_horizontal" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -25,23 +31,13 @@
         <TextView
             android:id="@+id/tv_day"
             android:text="@string/day_text"
-            style="@style/date_text"
-            android:textStyle="bold"
-            android:layout_gravity="center_horizontal">
+            style="@style/date_text_bold">
         </TextView>
 
         <TextView
             android:id="@+id/tv_month"
             android:text="@string/month_text"
-            style="@style/date_text"
-            android:textStyle="bold">
-        </TextView>
-
-        <TextView
-            android:id="@+id/tv_year"
-            android:text="@string/year_text"
-            style="@style/date_text"
-            android:textStyle="bold">
+            style="@style/date_text_bold">
         </TextView>
     </LinearLayout>
 
